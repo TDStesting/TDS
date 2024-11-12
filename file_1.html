@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TDS Domain Tool</title>
+    <style>
+        body {
+            background-image: url('image_.avif'); 
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: #fff;
+            flex-direction: column; /* Ensures the header is aligned above the main content */
+        }
+
+        h1 {
+            font-size: 2.5em;
+            text-align: center;
+            margin-top: 20px;
+            color: red; /* Changed to red color */
+        }
+
+        .main-container {
+            display: flex;
+            gap: 20px;
+            width: 80%;
+            max-width: 1200px;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .divider {
+            width: 2px;
+            background-color: red;
+            height: auto;
+            align-self: stretch;
+        }
+
+        .section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 1.6em;
+            margin-bottom: 10px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 100px;
+            padding: 10px;
+            font-size: 16px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: vertical;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .output-container {
+            margin-top: 10px;
+            padding: 5px;
+            border-radius: 5px;
+            color: #ddd;
+            word-wrap: break-word;
+            white-space: pre-wrap;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.1);
+            max-height: 200px; /* Adjust to show more content */
+            overflow-y: auto;  /* Enable scrolling for overflowing content */
+        }
+
+        .output-label {
+            margin: 0;
+            padding: 0;
+            font-weight: bold;
+        }
+
+        .output-text {
+            margin-top: 5px;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>TDS Domain Tool</h1> <!-- Heading in red color -->
+
+    <div class="main-container">
+        <div class="section">
+            <h2>Decrypt the URL</h2>
+            <textarea id="inputText" placeholder="Enter text here"></textarea>
+            <button onclick="replaceBracketsWithDot()">Replace</button>
+            <div class="output-container">
+                <p class="output-label">Decrypted URLs:</p>
+                <p class="output-text" id="result"></p>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="section">
+            <h2>Encrypt the URL</h2>
+            <textarea id="inputString" placeholder="Enter text here"></textarea>
+            <button onclick="replaceDots()">Replace</button>
+            <div class="output-container">
+                <p class="output-label">Encrypted URLs:</p>
+                <p class="output-text" id="output"></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function replaceBracketsWithDot() {
+            var input = document.getElementById("inputText").value;
+            var modifiedText = input.replace(/\[\.\]/g, '.');
+            document.getElementById("result").innerText = modifiedText;
+        }
+
+        function replaceDots() {
+            var input = document.getElementById("inputString").value;
+            var result = input.replace(/\./g, "[.]");
+            document.getElementById("output").innerText = result;
+        }
+    </script>
+</body>
+</html>
